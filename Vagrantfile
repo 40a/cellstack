@@ -22,6 +22,9 @@ Vagrant.configure(2) do |config|
     v.gui                   = false
   end
 
+  ip = "172.17.8.100"
+  config.vm.network :private_network, ip: ip
+
   if Vagrant.has_plugin?("vagrant-vbguest") then
     config.vbguest.auto_update = false
   end

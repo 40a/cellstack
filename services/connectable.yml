@@ -1,0 +1,10 @@
+description: connectable
+image: gliderlabs/connectable:master
+early: true
+pre: |
+  /usr/bin/docker run --rm --net host --name pre-connectable progrium/toolbox \
+    wait-conn $COREOS_PRIVATE_IPV4:8500
+start: |
+  /usr/bin/docker run --name %p \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    {{ $image }}

@@ -8,4 +8,5 @@ start: |
     --volume /var/run/docker.sock:/tmp/docker.sock \
     --net host \
     {{ $image }} \
+      -ip $private_ipv4 \
       consul://$private_ipv4:8500

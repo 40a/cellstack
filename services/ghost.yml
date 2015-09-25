@@ -1,0 +1,15 @@
+description: ghost
+image: mgood/ghost
+pre: |
+  /usr/bin/docker run --rm --name pre-ghost progrium/toolbox \
+    wait-resolve postgres.service.consul
+start: |
+  /usr/bin/docker run --name %p \
+    -p 2368:2368 \
+    -e GHOST_URL=http://example.com \
+    -e DB_CLIENT=pg \
+    -e DB_HOST={{ $db_host }} \
+    -e DB_USER=ghost \
+    -e DB_PASSWORD=ghost \
+    -l connect[5432]=postgres.service.consul \
+    {{ $image }}

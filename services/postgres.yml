@@ -1,0 +1,8 @@
+description: postgres
+image: postgres
+start: |
+  /usr/bin/docker run --name %p \
+    -P \
+    -e POSTGRES_USER=ghost \
+    -e POSTGRES_PASSWORD=ghost \
+    {{ $image }}
