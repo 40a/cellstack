@@ -1,0 +1,7 @@
+#cloud-config
+coreos:
+  update:
+    reboot-strategy: off
+  units:
+    {{ include "host.tmpl" | indent "    " }}
+    {{ include "service.tmpl" "name=ghost" "db_host=localhost" | indent "    " }}

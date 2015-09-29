@@ -7,3 +7,5 @@ coreos:
     {{ include "service.tmpl" "name=consul-server" "cluster=1" | indent "    " }}
     {{ include "service.tmpl" "name=resolvable" | indent "    " }}
     {{ include "service.tmpl" "name=registrator" | indent "    " }}
+    {{ include "service.tmpl" "name=postgres" | indent "    " }}
+    {{ include "service.tmpl" "name=ghost" "db_host=postgres.docker" | indent "    " }}

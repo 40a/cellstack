@@ -1,0 +1,7 @@
+#cloud-config
+coreos:
+  update:
+    reboot-strategy: off
+  units:
+    {{ include "host.tmpl" "skip=consul-agent" | indent "    " }}
+    {{ include "service.tmpl" "name=consul-server" "cluster=3" | indent "    " }}
